@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace JsonPropertyExample
 {
@@ -51,20 +52,20 @@ namespace JsonPropertyExample
                 });
                 dbContext.SaveChanges();
             }
-
+            
             using (var dbContext = new MyDbContext())
             {
                 foreach (var attribute in dbContext.Attributes)
                 {
-                    Console.WriteLine(attribute.Name);
+                    Debug.WriteLine(attribute.Name);
                     foreach (var value in attribute.Values)
                     {
-                        Console.Write("\t");
-                        Console.WriteLine(value.Value);
+                        Debug.Write("\t");
+                        Debug.WriteLine(value.Value);
                         foreach (var translation in value.Translations)
                         {
-                            Console.Write("\t\t");
-                            Console.WriteLine($"{translation.CultureName} = {translation.Translation}");    
+                            Debug.Write("\t\t");
+                            Debug.WriteLine($"{translation.CultureName} = {translation.Translation}");    
                         }
                     }
                 }
